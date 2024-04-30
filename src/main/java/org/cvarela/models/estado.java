@@ -17,7 +17,7 @@ public enum estado {
         return this.estado;
     }
 
-    public boolean isClosed(org.varelacasas.mongo.models.estado estado){
+    public boolean isClosed(org.cvarela.models.estado estado){
         return estado == CERRADO;
     }
 

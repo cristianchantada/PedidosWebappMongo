@@ -46,8 +46,8 @@ public class pedido {
         this.grupoId = grupoId;
         this.barId = barId;
         this.listaConsumiciones = listaConsumiciones;
-        this.estado = org.varelacasas.mongo.models.estado.EN_COLA;
-        this.estadoCobro = org.varelacasas.mongo.models.estadoCobro.NADA;
+        this.estado = estado.EN_COLA;
+        this.estadoCobro = estadoCobro.NADA;
     }
 
     public ObjectId getId() {
@@ -90,19 +90,19 @@ public class pedido {
         this.listaConsumiciones = listaConsumiciones;
     }
 
-    public org.varelacasas.mongo.models.estado getEstado() {
+    public estado getEstado() {
         return estado;
     }
 
-    public void setEstado(org.varelacasas.mongo.models.estado estado) {
+    public void setEstado(estado estado) {
         this.estado = estado;
     }
 
-    public org.varelacasas.mongo.models.estadoCobro getEstadoCobro() {
+    public estadoCobro getEstadoCobro() {
         return estadoCobro;
     }
 
-    public void setEstadoCobro(org.varelacasas.mongo.models.estadoCobro estadoCobro) {
+    public void setEstadoCobro(estadoCobro estadoCobro) {
         this.estadoCobro = estadoCobro;
     }
 
@@ -192,5 +192,26 @@ public class pedido {
 
     public void setGrupo(grupo aGrupo) {
         this.aGrupo = aGrupo;
+    }
+
+    @Override
+    public String toString() {
+        return "pedido{" +
+                "id=" + id +
+                ", fechaHoraPedido=" + fechaHoraPedido +
+                ", listaConsumiciones=" + listaConsumiciones +
+                ", estado=" + estado +
+                ", estadoCobro=" + estadoCobro +
+                ", importeTotal=" + importeTotal +
+                ", fechaHoraEnProceso=" + fechaHoraEnProceso +
+                ", fechaHoraDespachado=" + fechaHoraDespachado +
+                ", fechaHoraCerrado=" + fechaHoraCerrado +
+                ", fechaHoraModificado=" + fechaHoraModificado +
+                ", fechaHoraCancelado=" + fechaHoraCancelado +
+                ", aBar=" + aBar +
+                ", aCamarero=" + aCamarero +
+                ", aAlumno=" + aAlumno +
+                ", aGrupo=" + aGrupo +
+                '}';
     }
 }

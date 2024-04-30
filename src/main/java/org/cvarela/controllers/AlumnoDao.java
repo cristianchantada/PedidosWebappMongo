@@ -3,8 +3,8 @@ package org.cvarela.controllers;
 import com.mongodb.client.MongoCollection;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
-import org.varelacasas.mongo.models.alumno;
-import org.varelacasas.mongo.utils.ConexionBaseDatos;
+import org.cvarela.models.alumno;
+import org.cvarela.utils.ConexionBaseDatos;
 
 import java.util.List;
 

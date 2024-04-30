@@ -16,7 +16,7 @@ public enum estadoCobro {
         return estadoCobro;
     }
 
-    public boolean isFinished(org.varelacasas.mongo.models.estadoCobro estadoCobro) {
+    public boolean isFinished(org.cvarela.models.estadoCobro estadoCobro) {
         return estadoCobro == COMPLETO;
     }
 

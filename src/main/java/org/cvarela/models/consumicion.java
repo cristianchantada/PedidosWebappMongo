@@ -12,6 +12,7 @@ public class consumicion {
     private ObjectId productoId;
     private alumno aAlumno;
     private producto aProducto;
+    @BsonProperty(value = "estado_cobro")
     private estadoCobroConsumicion estadoCobro = estadoCobroConsumicion.PENDIENTE;
 
     public consumicion(){}
@@ -40,19 +41,19 @@ public class consumicion {
         this.productoId = productoId;
     }
 
-    public org.varelacasas.mongo.models.alumno getAlumno() {
+    public alumno getAlumno() {
         return aAlumno;
     }
 
-    public void setAlumno(org.varelacasas.mongo.models.alumno alumno) {
+    public void setAlumno(alumno alumno) {
         this.aAlumno = alumno;
     }
 
-    public org.varelacasas.mongo.models.producto getProducto() {
+    public producto getProducto() {
         return aProducto;
     }
 
-    public void setProducto(org.varelacasas.mongo.models.producto producto) {
+    public void setProducto(producto producto) {
         this.aProducto = producto;
     }
 
