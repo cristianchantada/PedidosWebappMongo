@@ -4,11 +4,13 @@ pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.lang.reflect.*" %>
-<%@ page import="org.varelacasas.controllers.PedidoDao,org.cvarela.models.entities.Pedido"%>
+<%@ page import="org.cvarela.controllers.PedidoDao, org.cvarela.models.pedido"%>
 
 <%
-List<Pedido> pedidosLista = (List<Pedido>) request.getAttribute("pedidosLista");
+
+    List<pedido> pedidosLista = (List<pedido>) request.getAttribute("pedidosLista");
     //String nombreBar = pedidosLista.get(0).getBar().getNombre();
+
 %>
 
 <!DOCTYPE html>
@@ -31,17 +33,17 @@ List<Pedido> pedidosLista = (List<Pedido>) request.getAttribute("pedidosLista");
                     <th>Estado</th>
                     <th>Grupo</th>
                     <th>Camarero</th>
-                    <th>Accion</th>
+                    <th>Importe pendiente</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            <%
-            for(Pedido aPedido : pedidosLista){
-            %>
+            <% for(pedido aPedido : pedidosLista){ %>
                 <a href="./pedidoServlet"><tr>
                     <td><%= aPedido.getFechaHoraPedido() != null ? aPedido.getFechaHoraPedido() : "" %></td>
                     <td><%= aPedido.getEstado() != null ?aPedido.getEstado() : "" %></td>
                     <td><%= aPedido.getGrupo() != null ? aPedido.getGrupo().getNombre() : "" %></td>
                     <td><%= aPedido.getCamarero() != null ? aPedido.getCamarero().getNombre() : "" %></td>
-                    <td><a href=""></a></td>
+                    <td> ImportePendiente aquí </td>
                 </tr></a>
             <% } %>
             </table>
