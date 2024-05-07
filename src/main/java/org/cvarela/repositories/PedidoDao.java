@@ -56,7 +56,7 @@ public class PedidoDao implements CrudRepositoryInterface<Pedido> {
 
             CamareroDao camareroDao = new CamareroDao();
             Camarero aCamarero = camareroDao.getById(p.getCamareroId());
-            p.setCamarero(aCamarero);
+            p.setCamareroResponsable(aCamarero);
 
             List<Consumicion> consumicionesPedidoLista = new ArrayList<>();
             if (p.getListaConsumiciones() != null && !p.getListaConsumiciones().isEmpty()) {

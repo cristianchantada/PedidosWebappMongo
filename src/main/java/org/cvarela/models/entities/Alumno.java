@@ -6,8 +6,14 @@ public class Alumno {
 
     private ObjectId id;
     private String nombre;
+    private String apellido;
 
     public Alumno(){}
+
+    public Alumno(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
 
     public ObjectId getId() {
         return id;
@@ -23,5 +29,13 @@ public class Alumno {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 }

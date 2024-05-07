@@ -1,5 +1,6 @@
 package org.cvarela.controllers;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.annotation.WebServlet;
 import org.cvarela.repositories.*;
 import org.cvarela.models.entities.Bar;
@@ -11,25 +12,29 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.cvarela.services.CamareroService;
+import org.cvarela.services.PedidoService;
+
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet({"/", "/index", "/index.html", "/index.jsp"})
 public class IndexServlet extends HttpServlet {
 
-    PedidoDao pedidoDao = new PedidoDao();
-    GrupoDao grupoDao = new GrupoDao();
-    BarDao barDao = new BarDao();
-    AlumnoDao alumnoDao = new AlumnoDao();
-    CamareroDao camareroDao = new CamareroDao();
+    @Inject
+    private PedidoService service;
+
+    @Inject
+    private CamareroService camareroService;
     
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Pedido> pedidosLista = pedidoDao.getAll();
-        List<Camarero> camarerosLista = camareroDao.getAll();
-        
-        for(Pedido p : pedidosLista) {
+        List<Pedido> pedidos = service.getAll();
+        List<Camarero> camareros = camareroService.getAll();
+
+
+        /*for(Pedido p : pedidosLista) {
         	
         	Grupo grupo = grupoDao.getById(p.getGrupoId());
         	p.setGrupo(grupo);
@@ -39,7 +44,7 @@ public class IndexServlet extends HttpServlet {
             
         }
 
-        /*pedido aPedido = new pedido();
+        pedido aPedido = new pedido();
         aPedido.setImporteTotal(12.32F);
         aPedido.setEstadoCobro(estadoCobro.NADA);
         pedidoDao.save(aPedido);*/
@@ -48,11 +53,10 @@ public class IndexServlet extends HttpServlet {
 
         pedido aPedido = pedidoDao.getById(objectId);*/
 
-
-
-        resp.getWriter().println("pedidosLista = " + pedidosLista);
-
-        req.setAttribute("pedidosLista", pedidosLista);
+        req.setAttribute("camareros", camareros);
+        req.setAttribute("pedidos", pedidos);
         getServletContext().getRequestDispatcher("/pedidos.jsp").forward(req, resp);
+
+
     }
 }

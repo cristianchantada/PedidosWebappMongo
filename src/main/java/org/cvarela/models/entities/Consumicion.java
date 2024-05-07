@@ -11,12 +11,18 @@ public class Consumicion {
     private ObjectId alumnoId;
     @BsonProperty(value = "producto_id")
     private ObjectId productoId;
-    private Alumno aAlumno;
-    private Producto aProducto;
+    private Alumno alumno;
+    private Producto producto;
     @BsonProperty(value = "estado_cobro")
-    private EstadoCobroConsumicion estadoCobro = EstadoCobroConsumicion.PENDIENTE;
+    private EstadoCobroConsumicion estadoCobroConsumicion;
 
-    public Consumicion(){}
+    public Consumicion(){this.estadoCobroConsumicion = EstadoCobroConsumicion.PENDIENTE;}
+
+    public Consumicion(Alumno alumno, Producto producto) {
+        this.alumno = alumno;
+        this.producto = producto;
+        this.estadoCobroConsumicion = EstadoCobroConsumicion.PENDIENTE;
+    }
 
     public ObjectId getId() {
         return id;
@@ -24,6 +30,30 @@ public class Consumicion {
 
     public void setId(ObjectId id) {
         this.id = id;
+    }
+
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto produto) {
+        this.producto = produto;
+    }
+
+    public EstadoCobroConsumicion getEstadoCobroConsumicion() {
+        return estadoCobroConsumicion;
+    }
+
+    public void setEstadoCobroConsumicion(EstadoCobroConsumicion estadoCobroConsumicion) {
+        this.estadoCobroConsumicion = estadoCobroConsumicion;
     }
 
     public ObjectId getAlumnoId() {
@@ -40,29 +70,5 @@ public class Consumicion {
 
     public void setProductoId(ObjectId productoId) {
         this.productoId = productoId;
-    }
-
-    public Alumno getAlumno() {
-        return aAlumno;
-    }
-
-    public void setAlumno(Alumno alumno) {
-        this.aAlumno = alumno;
-    }
-
-    public Producto getProducto() {
-        return aProducto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.aProducto = producto;
-    }
-
-    public EstadoCobroConsumicion getEstadoCobro() {
-        return estadoCobro;
-    }
-
-    public void setEstadoCobro(EstadoCobroConsumicion estadoCobro) {
-        this.estadoCobro = estadoCobro;
     }
 }

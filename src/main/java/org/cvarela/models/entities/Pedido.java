@@ -8,7 +8,6 @@ import org.cvarela.models.EstadoCobro;
 import java.util.Date;
 import java.util.List;
 
-// Meter el nombre de la collección de mongo si no funciona correctame
 public class Pedido {
 
     private ObjectId id;
@@ -33,15 +32,18 @@ public class Pedido {
     @BsonProperty(value = "fecha_hora_cerrado")
     private Date fechaHoraCerrado;
     @BsonProperty(value = "fecha_hora_modificado")
-    private List<Date> fechaHoraModificado;
+    private Date fechaHoraModificado;
     @BsonProperty(value = "fecha_hora_cancelado")
     private Date fechaHoraCancelado;
-    private Bar aBar;
-    private Camarero aCamarero;
-    private Alumno aAlumno;
-    private Grupo aGrupo;
+    private Bar bar;
+    private Camarero camareroResponsable;
+    private Alumno alumno;
+    private Grupo grupo;
 
-    public Pedido() {}
+    public Pedido() {
+        this.estado = estado.EN_COLA;
+        this.estadoCobro = estadoCobro.NADA;
+    }
 
     public Pedido(ObjectId grupoId, ObjectId barId, List<Consumicion> listaConsumiciones) {
         this.fechaHoraPedido = new Date();
@@ -148,11 +150,11 @@ public class Pedido {
         this.fechaHoraCerrado = fechaHoraCerrado;
     }
 
-    public List<Date> getFechaHoraModificado() {
+    public Date getFechaHoraModificado() {
         return fechaHoraModificado;
     }
 
-    public void setFechaHoraModificado(List<Date> fechaHoraModificado) {
+    public void setFechaHoraModificado(Date fechaHoraModificado) {
         this.fechaHoraModificado = fechaHoraModificado;
     }
 
@@ -165,35 +167,35 @@ public class Pedido {
     }
 
     public Bar getBar() {
-        return aBar;
+        return bar;
     }
 
-    public void setBar(Bar aBar) {
-        this.aBar = aBar;
+    public void setBar(Bar bar) {
+        this.bar = bar;
     }
 
-    public Camarero getCamarero() {
-        return aCamarero;
+    public Camarero getCamareroResponsable() {
+        return camareroResponsable;
     }
 
-    public void setCamarero(Camarero aCamarero) {
-        this.aCamarero = aCamarero;
+    public void setCamareroResponsable(Camarero camareroResponsable) {
+        this.camareroResponsable = camareroResponsable;
     }
 
     public Alumno getAlumno() {
-        return aAlumno;
+        return alumno;
     }
 
-    public void setAlumno(Alumno aAlumno) {
-        this.aAlumno = aAlumno;
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
     public Grupo getGrupo() {
-        return aGrupo;
+        return grupo;
     }
 
-    public void setGrupo(Grupo aGrupo) {
-        this.aGrupo = aGrupo;
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
     @Override
@@ -210,10 +212,10 @@ public class Pedido {
                 ", fechaHoraCerrado=" + fechaHoraCerrado +
                 ", fechaHoraModificado=" + fechaHoraModificado +
                 ", fechaHoraCancelado=" + fechaHoraCancelado +
-                ", aBar=" + aBar +
-                ", aCamarero=" + aCamarero +
-                ", aAlumno=" + aAlumno +
-                ", aGrupo=" + aGrupo +
+                ", aBar=" + bar +
+                ", camarero=" + camareroResponsable +
+                ", aAlumno=" + alumno +
+                ", aGrupo=" + grupo +
                 '}';
     }
 }
